@@ -2,7 +2,7 @@
 1. [Touchpad](#touchpad)
 2. [Power Management](#power)
 
-![](https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/tablets/matebook-d-14-k/img/huawei_matebook_d_kv-original.jpg)
+![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
 
 <a name="touchpad"></a>
 ## Touchpad
