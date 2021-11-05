@@ -18,7 +18,7 @@ sudo modprobe -r i2c_hid_acpi i2c_hid && sudo modprobe i2c_hid_acpi i2c_hid
 <a name="power"></a>
 ## Power Management
 
-No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery.
+No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery in this laptop.
 For some reason, Linux Mint has lowest power consumption comparing to other distros, however, after a lot of research and testing, I created a bash script that do some tweaks to put more things possibile in power saving mode, and have the best result in terms of power consumption.
 
 
