@@ -1,27 +1,34 @@
 # GNU/Linux on MateBook D 14" (AMD Ryzen 5 3500U 2020)
 1. [Touchpad](#touchpad)
 2. [Power Management](#power)
+    1. [Power Saving](#Power_Saving)
+    2. [Performance](#Performance)
+    3. [Other](#Other)
 
 ![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
+
+
 
 <a name="touchpad"></a>
 ## Touchpad
 
 **There is a bug** that appears intermittently. Touchpad can become lost and unresponsive after wake from suspend.
-
 A workaround is to unload and reload the touchpad kernel module.
-
 ```
 sudo modprobe -r i2c_hid_acpi i2c_hid && sudo modprobe i2c_hid_acpi i2c_hid
 ```
 
+
+
 <a name="power"></a>
 ## Power Management
 
-No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery in this laptop.
-For some reason, Linux Mint has lowest power consumption comparing to other distros, however, after a lot of research and testing, I created a bash script that do some tweaks to put more things possibile in power saving mode, and have the best result in terms of power consumption.
 
+<a name="Power_Saving"></a>
+#### Power Saving
 
+No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery in this laptop for my experience.
+For some reason, Linux Mint has lowest power consumption comparing to other distros... however, after some research and testing, I created a bash script that do some tweaks to put more things possibile in power saving mode, and have the best result in terms of power consumption. You have to install ryzenadj and zenstates to run this.
 ```
 #!/bin/bash
 
@@ -47,4 +54,54 @@ zenstates --disable -p 0 &&
 zenstates --disable -p 1
 ```
 
-You have to install ryzenadj and zenstates.
+You can create a systemctl service that starts on boot (for example /etc/systemd/system/pwrsaving_matebook.service):
+```
+[Unit]
+Description=pwrrrrrsavingggggggg
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/home/user/pwrsaving.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+and then enable it with:
+```
+sudo systemctl enable --now pwrsaving_matebook.service
+```
+
+<a name="Performance"></a>
+#### Performance
+
+If you want to obtain the best performance, here is a bash script to do so:
+```
+#!/bin/bash
+
+echo 0 > /proc/sys/vm/laptop_mode &&
+echo 0 > /sys/module/snd_hda_intel/parameters/power_save &&
+echo N > /sys/module/snd_hda_intel/parameters/power_save_controller &&
+echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor &&
+echo 1500 > /proc/sys/vm/dirty_writeback_centisecs &&
+echo performance > /sys/module/pcie_aspm/parameters/policy &&
+ryzenadj -a 45000 -b 45000 -c 45000 --tctl-temp=90 --max-performance &&
+echo performance > /sys/class/drm/card0/device/power_dpm_state &&
+#echo high > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+echo manual > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+echo 5 > /sys/class/drm/card0/device/pp_power_profile_mode &&
+echo 1 > /sys/devices/system/cpu/cpufreq/boost &&
+zenstates --enable -p 0 &&
+zenstates --enable -p 1
+```
+
+
+
+<a name="Other"></a>
+#### Other
+With this laptop I had two more issues: fan and wifi.
+
+Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
+
+Wifi can disconnect sometimes randomly. It happens because there is a buggy software that doesn't know how to properly change from 2.4GHz to 5GHz and viceversa. The "solution" that I found is to manually set the wifi network we are connected to in 2.4Ghz OR in 5GHz... this way it doesn't switch between 2GHz and 5GHz. The issue does not happen to me anymore though, so I came back to 2-band automatic switch.
