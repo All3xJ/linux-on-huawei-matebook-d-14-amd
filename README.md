@@ -135,8 +135,15 @@ zenstates --enable -p 1
 
 <a name="Other"></a>
 #### Other
-With this laptop I had two more issues: fan and wifi.
+With this laptop I had three more issues: freeze during intensive tasks, fan, wifi.
 
+**Freeze:**
+It happens that if I am doing intensive tasks (for example I am in a videocall with my webcam active while I am recording the screen and doing other stuff) the laptop starts to lag until if freezes. I noticed that this happens ONLY if it is charging, so I guess that the temperatures go too high due to the charging and so it lags. Maybe the availability of RAM is related too. I suggest you two things:
+1) When you do intensive tasks and you notice the lag, you have to unplug the charger. 
+2) Increase the swap partition size
+
+**Fan**:
 Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
 
+**WiFi**:
 Wifi can disconnect sometimes randomly. It happens because there is a buggy software that doesn't know how to properly change from 2.4GHz to 5GHz and viceversa. The "solution" that I found is to manually set the wifi network we are connected to in 2.4Ghz OR in 5GHz... this way it doesn't switch between 2GHz and 5GHz. The issue does not happen to me anymore though, so I came back to 2-band automatic switch.
