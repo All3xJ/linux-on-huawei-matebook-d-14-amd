@@ -62,8 +62,8 @@ sudo systemctl --now root-suspend.service && sudo systemctl --now root-resume.se
 <a name="Power_Saving"></a>
 #### Power Saving
 
-No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery in this laptop for my experience.
-For some reason, Linux Mint has lowest power consumption comparing to other distros... however, after some research and testing, I created a bash script that do some tweaks to put more things possibile in power saving mode, and have the best result in terms of power consumption. You have to install ryzenadj and zenstates to run this.
+No automated program like tlp, powertop, laptop-mode-tools, auto-cpufreq, etc improves the battery in this laptop in my experience.
+For some reason, Linux Mint has lowest power consumption compared to other distros... however, after some research and testing, I created a bash script that do some tweaks to put more things possibile in power saving mode, and have the best result in terms of power consumption. You have to install ryzenadj and zenstates to run this.
 ```
 #!/bin/bash
 
