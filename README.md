@@ -1,6 +1,6 @@
 # GNU/Linux on MateBook D 14" (AMD Ryzen 5 3500U 2020)
-1. [Touchpad](#touchpad)
-2. [Power Management](#power)
+1. [Touchpad](#Touchpad)
+2. [Power Management](#Power_Management)
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
     3. [Other](#Other)
@@ -9,18 +9,53 @@
 
 
 
-<a name="touchpad"></a>
+<a name="Touchpad"></a>
 ## Touchpad
 
-**There is a bug** that appears intermittently. Touchpad can become lost and unresponsive after wake from suspend.
+There is a bug that appears intermittently. Touchpad can become lost and unresponsive after wake from suspend.
 A workaround is to unload and reload the touchpad kernel module.
 ```
 sudo modprobe -r i2c_hid_acpi i2c_hid && sudo modprobe i2c_hid_acpi i2c_hid
 ```
 
+You can automate the process using the sleep hooks (more infos here: https://wiki.archlinux.org/title/Power_management#Sleep_hooks just look the part of "root-suspend" and "root-resume" services). Basically when the laptop suspends, you have to unload "i2c_hid_acpi" and "i2c_hid", and when it wakes up you have to reload them.
+
+Here is my /etc/systemd/system/root-suspend.service:
+```
+[Unit]
+Description=Local system suspend actions
+Before=sleep.target
+
+[Service]
+Type=simple
+ExecStart=-/usr/bin/modprobe -r i2c_hid_acpi i2c_hid
+
+[Install]
+WantedBy=sleep.target
+```
+
+and here is /etc/systemd/system/root-resume.service:
+```
+[Unit]
+Description=Local system resume actions
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/modprobe i2c_hid_acpi i2c_hid
+
+[Install]
+WantedBy=suspend.target
+```
+
+To enable them on boot, just do:
+```
+sudo systemctl --now root-suspend.service && sudo systemctl --now root-resume.service
+```
 
 
-<a name="power"></a>
+
+<a name="Power_Management"></a>
 ## Power Management
 
 
