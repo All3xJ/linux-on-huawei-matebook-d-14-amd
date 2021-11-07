@@ -89,7 +89,7 @@ zenstates --disable -p 0 &&
 zenstates --disable -p 1
 ```
 
-You can create a systemctl service that starts on boot (for example /etc/systemd/system/pwrsaving_matebook.service):
+You can create a systemctl service that starts on boot (for example /etc/systemd/system/pwrsavinggg.service):
 ```
 [Unit]
 Description=pwrrrrrsavingggggggg
@@ -105,7 +105,7 @@ WantedBy=multi-user.target
 
 and then enable it with:
 ```
-sudo systemctl enable --now pwrsaving_matebook.service
+sudo systemctl enable --now pwrsavinggg.service
 ```
 
 <a name="Performance"></a>
