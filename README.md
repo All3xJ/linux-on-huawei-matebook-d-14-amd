@@ -1,6 +1,7 @@
 # GNU/Linux on MateBook D 14" (AMD Ryzen 5 3500U 2020)
 1. [Touchpad](#Touchpad)
-2. [Power Management](#Power_Management)
+2. [Freeze during intensive task](#Freeze)
+3. [Power Management](#Power_Management)
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
     3. [Other](#Other)
@@ -52,6 +53,26 @@ To enable them on boot, just do:
 ```
 sudo systemctl --now root-suspend.service && sudo systemctl --now root-resume.service
 ```
+
+
+
+<a name="Freeze"></a>
+## Freeze during intensive tasks
+It happens that if you do intensive tasks (for example you are in a videocall with your webcam on while you are recording the screen and doing other stuff) the laptop starts to lag until if freezes. I noticed that this happens ONLY if it is charging, so I guess that the temperatures go too high due to the charging and so it lags. Maybe the availability of RAM is related too.
+
+Some users reported that editing the file ```/etc/default/grub```, specifically the line ```GRUB_CMDLINE_LINUX_DEFAULT```, adding ```idle=nomwait iommu=pt``` as boot parameters, it solves the issue:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="idle=nomwait iommu=pt"
+```
+after you edited the file you have to update the grub, it should work by doing:
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+If the issue does not fix, I suggest you:
+1) When you do intensive tasks and you notice the lag, you have to unplug the charger. 
+2) Increase the swap partition size
+
 
 
 
@@ -135,12 +156,7 @@ zenstates --enable -p 1
 
 <a name="Other"></a>
 #### Other
-With this laptop I had three more issues: freeze during intensive tasks, fan, wifi.
-
-**Freeze:**
-It happens that if I am doing intensive tasks (for example I am in a videocall with my webcam active while I am recording the screen and doing other stuff) the laptop starts to lag until if freezes. I noticed that this happens ONLY if it is charging, so I guess that the temperatures go too high due to the charging and so it lags. Maybe the availability of RAM is related too. I suggest you two things:
-1) When you do intensive tasks and you notice the lag, you have to unplug the charger. 
-2) Increase the swap partition size
+With this laptop I had two more issues: fan and wifi.
 
 **Fan**:
 Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
