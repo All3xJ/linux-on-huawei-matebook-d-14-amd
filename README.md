@@ -4,7 +4,7 @@
 3. [Power Management](#Power_Management)
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
-    3. [Other](#Other)
+4. [Other](#Other)
 
 ![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
 
