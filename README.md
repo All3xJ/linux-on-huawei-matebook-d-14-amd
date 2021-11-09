@@ -51,7 +51,7 @@ WantedBy=suspend.target
 
 To enable them on boot, just do:
 ```
-sudo systemctl --now root-suspend.service && sudo systemctl --now root-resume.service
+sudo systemctl enable --now root-suspend.service && sudo systemctl enable --now root-resume.service
 ```
 
 
