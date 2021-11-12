@@ -1,10 +1,11 @@
 # GNU/Linux on MateBook D 14" (AMD Ryzen 5 3500U 2020)
 1. [Touchpad](#Touchpad)
 2. [Freeze during intensive task](#Freeze)
-3. [Power Management](#Power_Management)
+3. [WiFi disconnects randomly](#Wifi_disconnects)
+4. [Power Management](#Power_Management)
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
-4. [Other](#Other)
+5. [Other](#Other)
 
 ![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
 
@@ -73,6 +74,14 @@ If the issue does not fix, I suggest you:
 1) When you do intensive tasks and you notice the lag, you have to unplug the charger. 
 2) Increase the swap partition size
 
+
+
+
+
+<a name="Wifi_disconnects"></a>
+## Wifi disconnects randomly
+
+Wifi can disconnect sometimes randomly. It happens because there is a buggy software that doesn't know how to properly change from 2.4GHz to 5GHz and viceversa. The "solution" that I found is to manually set the wifi network we are connected to in 2.4Ghz OR in 5GHz... this way it doesn't switch between 2GHz and 5GHz. This is doable with your network manager in the settings of your DE.
 
 
 
@@ -156,10 +165,7 @@ zenstates --enable -p 1
 
 <a name="Other"></a>
 #### Other
-With this laptop I had two more issues: fan and wifi.
+With this laptop I had one more issue: fan.
 
 **Fan**:
 Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
-
-**WiFi**:
-Wifi can disconnect sometimes randomly. It happens because there is a buggy software that doesn't know how to properly change from 2.4GHz to 5GHz and viceversa. The "solution" that I found is to manually set the wifi network we are connected to in 2.4Ghz OR in 5GHz... this way it doesn't switch between 2GHz and 5GHz. The issue does not happen to me anymore though, so I came back to 2-band automatic switch.
