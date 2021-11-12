@@ -5,7 +5,6 @@
 4. [Power Management](#Power_Management)
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
-5. [Other](#Other)
 
 ![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
 
@@ -164,8 +163,7 @@ zenstates --enable -p 1
 
 
 <a name="Other"></a>
-#### Other
+### Other
 With this laptop I had one more issue: fan.
 
-**Fan**:
 Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
