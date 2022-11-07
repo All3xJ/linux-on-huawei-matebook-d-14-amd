@@ -6,6 +6,7 @@
     1. [Power Saving](#Power_Saving)
     2. [Performance](#Performance)
 5. [Fan](#Fan)
+6. [Fingerprint](#Fingerprint)
 
 ![](https://www.sceltanotebook.it/images/stories/huawei-matebook-d-14-2020/huawei-matebook-d-14-2020.webp)
 
@@ -167,3 +168,11 @@ zenstates --enable -p 1
 ### Fan
 
 Fan can be loud sometimes, and they can't be controlled via software (with Windows neither), so the best you can do is to follow the [Power Saving](#Power_Saving) paragraph.
+
+
+
+<a name="Fingerprint"></a>
+### Fingerprint
+
+Fingerprint driver has been reversed engineered succesfully :D so you are finally to use fingerprint also on Linux!! Open source world is amazing.
+You have to flash a firmware for your fingerprint, and then install a package. Further information in Discord channel here: https://discord.gg/XATKTUfX7M in the cannel #5110 (this is the ID of fingerprint device in this Matebook computer). If your PC isn't exactly the one of this repo, you can check for your fingerprint device ID number writing ```sudo lsusb -vd "27c6:" | grep "idProduct"``` in a terminal
